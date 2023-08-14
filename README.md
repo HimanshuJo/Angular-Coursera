@@ -1,2 +1,2 @@
 # Angular-test
-Test repo for Angular projects
+Test repo for a sample Angular project
