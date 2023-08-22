@@ -6,14 +6,32 @@
     function LunchCheckController($scope){
         $scope.items="";
         $scope.message="";
+        $scope.checkLunchMessage={
+            "color": ""
+        }
+        $scope.styleForTextbox={
+            border:""
+        }
         $scope.checkItems=function(){
-            const tochk=$scope.items.split(',');
-            if(tochk.length==1&&tochk[0]===""){
+            let tochk=$scope.items.split(',');
+            tochk.sort();
+            let fntochk=tochk.filter(function(item){
+                item=item.replaceAll(' ', '');
+                return item!=="";
+            })
+            console.log("items: "+fntochk+" "+fntochk.length);
+            if(fntochk.length==0){
                 $scope.message="Please enter data first";
-            } else if(tochk.length<=3){
+                $scope.checkLunchMessage.color="red";
+                $scope.styleForTextbox.border="1px solid red";
+            } else if(fntochk.length<=3){
                 $scope.message="Enjoy!";
+                $scope.checkLunchMessage.color="green";
+                $scope.styleForTextbox.border="1px solid green";
             } else{
                 $scope.message="Too much!";
+                $scope.checkLunchMessage.color="green";
+                $scope.styleForTextbox.border="1px solid green";
             }
         }
     }

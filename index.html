@@ -19,14 +19,16 @@
   <div ng-controller="LunchCheckController" class="container">
     <h1>Lunch Checker</h1>
     <div class="form-group">
-      <input id="lunch-menu" type="text" placeholder="list comma separated dishes you usually have for lunch"
+      <input ng-style="styleForTextbox" id="lunch-menu" type="text" placeholder="list comma separated dishes you usually have for lunch"
         class="form-control" ng-model="items">
+        <br>
+        <span>An empty item(i.e., ,) is not consider towards the final count</span>
     </div>
     <div class="form-group">
       <button class="btn btn-default" ng-click="checkItems()">Check If Too Much</button>
     </div>
     <div class="form-group message">
-      <h1>{{message}}</h1>
+      <span ng-style="checkLunchMessage">{{message}}</span>
     </div>
   </div>
 
